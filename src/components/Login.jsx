@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import "./Login.css";
 
 function Login() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -26,6 +28,7 @@ function Login() {
             if (response.ok) {
                 console.log("Log in successful!");
                 console.log("Role:", data.role);
+                navigate("/opportunities");
             } else {
                 console.log(data.message);
             }
