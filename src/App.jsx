@@ -5,18 +5,20 @@ import Login from "./components/Login";
 import Opportunities from "./components/Opportunities";
 import Contact from "./components/Contact";
 import About from "./components/About";
+import Profile from "./components/Profile";
 import "./App.css";
 function App() {
 
   return (
     
     <Routes>
-      <Route path="/Home" element={<Home/>} />
-      <Route path= "/SignUp" element = {<SignUp/>} />
-      <Route path="/Login" element= {<Login/>} />
+      <Route path="/home" element={<Home/>} />
+      <Route path= "/signUp" element = {<SignUp/>} />
+      <Route path="/login" element= {<Login/>} />
       <Route path="/opportunities" element= {<Opportunities/>} />
-      <Route path="/Contact" element= {<Contact/>} />
-      <Route path="/About" element= {<About/>} />
+      <Route path="/contact" element= {<Contact/>} />
+      <Route path="/about" element= {<About/>} />
+      <Route path="/profile" element= {<Profile/>} />
 
     </Routes>
 

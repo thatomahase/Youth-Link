@@ -21,5 +21,6 @@ p{
 }
 h2 {
     font-size: medium;
-    color: rgb(216, 215, 215);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(100, 98, 98);
 }

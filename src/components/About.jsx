@@ -15,14 +15,14 @@ import "./About.css";
                 bursaries, graduate programmes, jobs, and skills development opportunities.
             </p>
 
-            <h2>Our Mission</h2>
+            <h2><strong>Our Mission</strong></h2>
             <p>
                 Our mission is to make career and educational opportunities easier to discover 
                 and access. We want to help young people find opportunities that match thier 
                 goals and take meaningful steps towards building their future.
             </p>
             
-            <h2>What We Offer</h2>
+            <h2><strong>What we offer</strong></h2>
             <p>
                 Youth-Link provides a central place where users can discover opportunities
                 from different organisations and comapanies. Instead of spending hours 
@@ -30,7 +30,7 @@ import "./About.css";
                 opportunities in one convenient place.
             </p>
 
-            <h2>Why Youth-Link?</h2>
+            <h2><strong>Why Youth-Link?</strong></h2>
             <p>
                 Finding the right opportunity in a relevant source can sometimes be difficult, 
                 especially when information is spread across different websites and platforms.
@@ -38,7 +38,7 @@ import "./About.css";
                 the people who need them.
             </p>
 
-            <h2>Our Vision</h2>
+            <h2><strong>Our Vision</strong></h2>
             <p>
                 We envision a future where every young person has easier access to information,
                 resources, and opportunities that can help them learn, grow, and build a 
