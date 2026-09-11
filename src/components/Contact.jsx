@@ -1,6 +1,23 @@
+import { useState } from "react";
 import Navbar from "./Navbar";
+import "./Contact.css";
 
 function Contact() {
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: "",
+    });
+
+    function handleChange(e) {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log(formData); // we'll swap this for a real API call once your backend is ready
+    }
+
     return(
         <div className="contact">
             <Navbar/>
@@ -12,7 +29,7 @@ function Contact() {
                 as soon as possible.
             </p>
 
-            <form className="contact-form">
+            <form className="contact-form" onSubmit={handleSubmit}>
                 <label>Full Name</label>
                 <br />
 
@@ -21,7 +38,8 @@ function Contact() {
                       id="name"
                       name="name"
                       placeholder="Enter your Full name"
-                
+                      value={formData.name}
+                      onChange={handleChange}
                 />
                 <br />
 
@@ -33,6 +51,8 @@ function Contact() {
                 id="email"
                 name="email"
                 placeholder="Enter your registered email address"
+                value={formData.email}
+                onChange={handleChange}
                 />
                 <br />
 
@@ -44,6 +64,8 @@ function Contact() {
                 name="message"
                 placeholder="How can we assist you today?"
                 rows="6"
+                value={formData.message}
+                onChange={handleChange}
                 ></textarea>
                 <br />
 
