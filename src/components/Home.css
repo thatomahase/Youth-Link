@@ -1,16 +1,150 @@
-.Ekhaya{
+.Ekhaya {
     min-height: 100vh;
     max-width: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    background-image: linear-gradient(
-        rgba(0, 0, 0, 0.3),
-        rgba(0, 0, 0, 0.3)
-    ), url("../assets/images/image.png");   
+
+    position: relative;
+    overflow: hidden;
+
+    background: #050509;
+
+    isolation: isolate;
+}
+
+
+/* =========================================
+   SMOOTH LIVE COLOR ATMOSPHERE
+   ========================================= */
+
+.Ekhaya::after {
+    content: "";
+
+    position: absolute;
+    inset: -30%;
+
+    background:
+    radial-gradient(
+        circle at 15% 25%,
+        rgba(0, 150, 255, 0.58),
+        transparent 30%
+    ),
+    radial-gradient(
+        circle at 85% 25%,
+        rgba(255, 100, 0, 0.52),
+        transparent 30%
+    ),
+    radial-gradient(
+        circle at 70% 80%,
+        rgba(110, 45, 230, 0.44),
+        transparent 32%
+    ),
+    radial-gradient(
+        circle at 25% 80%,
+        rgba(0, 100, 220, 0.38),
+        transparent 28%
+    );
+
+    background-size: 150% 150%;
+
+    filter: blur(32px);
+
+    animation: smoothYouthLink 12s ease-in-out infinite alternate;
+
+    z-index: -2;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   YOUTH-LINK LOGO
+   ========================================= */
+
+.Ekhaya::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image: url("../assets/images/image.png");
+
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+
+    mix-blend-mode: screen;
+
+    z-index: -1;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   KEEP PAGE CONTENT COMPLETELY STILL
+   ========================================= */
+
+.Ekhaya > * {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================
+   SMOOTH LIVE WALLPAPER
+   ========================================= */
+
+@keyframes smoothYouthLink {
+
+    0% {
+        background-position:
+            0% 25%,
+            100% 20%,
+            65% 85%,
+            20% 75%;
+    }
+
+    20% {
+        background-position:
+            18% 35%,
+            88% 28%,
+            58% 72%,
+            32% 68%;
+    }
+
+    40% {
+        background-position:
+            40% 55%,
+            70% 40%,
+            48% 60%,
+            48% 55%;
+    }
+
+    60% {
+        background-position:
+            62% 65%,
+            48% 55%,
+            72% 42%,
+            65% 38%;
+    }
+
+    80% {
+        background-position:
+            82% 48%,
+            28% 68%,
+            88% 58%,
+            78% 62%;
+    }
+
+    100% {
+        background-position:
+            100% 35%,
+            5% 75%,
+            65% 80%,
+            90% 25%;
+    }
 }

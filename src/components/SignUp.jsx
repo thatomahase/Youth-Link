@@ -3,182 +3,148 @@ import Navbar from "./Navbar";
 import "./SignUp.css";
 
 function SignUp() {
-    const [user, setUser] = useState({
-        fullname: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-    });
+  const [user, setUser] = useState({
+    fullname: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
-    const [errors, setErrors] = useState({});
-    const handleChange = (e) => {
-        setUser({
-            ...user,
-            [e.target.name]: e.target.value,
-        });
+  const [errors, setErrors] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+    general: ""
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    let newErrors = {};
+
+    if (
+      user.fullname === "" ||
+      user.email === "" ||
+      user.password === "" ||
+      user.confirmPassword === ""
+    ) {
+      newErrors.general = "Please fill in the required fields.";
+      setErrors(newErrors);
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(user.email)) {
+      newErrors.email = "Please enter a valid email address";
+      setErrors(newErrors);
+      return;
+    }
+
+    if (user.password.length < 8) {
+      newErrors.password = "Your password must have at least 8 characters.";
+      setErrors(newErrors);
+      return;
+    }
+
+    if (user.password !== user.confirmPassword) {
+      newErrors.confirmPassword = "Passwords do not match.";
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({});
+
+    const userData = {
+      username: user.fullname,
+      email: user.email,
+      password: user.password,
+      role: "student",
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        let newErrors = {};
-
-        // Check if required fields are empty
-        if (
-            user.fullname === "" ||
-            user.email === "" ||
-            user.password === "" ||
-            user.confirmPassword === ""
-        ) {
-            newErrors.general = "Please fill in the required fields.";
-            setErrors(newErrors);
-            return;
+    try {
+      const response = await fetch(
+        "http://127.0.0.1:5000/api/users/register", 
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include", 
+          body: JSON.stringify(userData),
         }
+      );
 
-        // Check email format
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(user.email)) {
-            newErrors.email = "Please enter a valid email address";
-            setErrors(newErrors);
-            return;
-        }
+      const data = await response.json();
 
-        // Check password length
-        if (user.password.length < 8) {
-            newErrors.password =
-                "Your password must have at least 8 characters.";
-            setErrors(newErrors);
-            return;
-        }
+      if (response.ok) {
+        console.log("Account created successfully!");
+        console.log(data);
+      } else {
+        console.log("Registration failed:", data.error || data.message);
+      }
+    } catch (error) {
+      console.error("Error connecting to server:", error);
+    }
+  };
 
-        // Check passwords match
-        if (user.password !== user.confirmPassword) {
-            newErrors.confirmPassword = "Passwords do not match.";
-            setErrors(newErrors);
-            return;
-        }
+  return (
+    <div className="signup">
+      <Navbar />
+      <h1>Create Account</h1>
+      <form onSubmit={handleSubmit}>
+        <label>Full Name</label>
+        <input
+          type="text"
+          name="fullname"
+          placeholder="Enter Your Full Name"
+          required
+          value={user.fullname}
+          onChange={handleChange}
+        />
 
-        // Clear errors
-        setErrors({});
+        <label>Email</label>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your Email Address"
+          required
+          value={user.email}
+          onChange={handleChange}
+        />
+        {errors.email && <p className="error-text">{errors.email}</p>}
 
-        // Data that will be sent to Flask
-        const userData = {
-            username: user.fullname,
-            email: user.email,
-            password: user.password,
-            role: "student",
-        };
+        <label>Password</label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter your Password"
+          required
+          value={user.password}
+          onChange={handleChange}
+        />
+        {errors.password && <p className="error-text">{errors.password}</p>}
 
-        try {
-            const response = await fetch(
-                "http://127.0.0.1:5000/api/users/",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(userData),
-                }
-            );
+        <label>Confirm Password</label>
+        <input
+          type="password"
+          name="confirmPassword"
+          placeholder="Please enter your Password again"
+          required
+          value={user.confirmPassword}
+          onChange={handleChange}
+        />
+        {errors.confirmPassword && (
+          <p className="error-text">{errors.confirmPassword}</p>
+        )}
 
-            const data = await response.json();
+        {errors.general && <p className="error-text">{errors.general}</p>}
 
-            if (response.ok) {
-                console.log("Account created successfully!");
-                console.log(data);
-            } else {
-                console.log("Registration failed:", data.message);
-            }
-        } catch (error) {
-            console.error("Error connecting to server:", error);
-        }
-    };
-
-    return (
-        <div className="signup">
-            <Navbar />
-
-            <h1>Create Account</h1>
-
-            <form onSubmit={handleSubmit}>
-                <label>Full Name</label>
-                <br />
-
-                <input
-                    type="text"
-                    name="fullname"
-                    placeholder="Enter Your Full Name"
-                    required
-                    value={user.fullname}
-                    onChange={handleChange}
-                />
-
-                <br />
-
-                <label>Email</label>
-                <br />
-
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Enter your Email Address"
-                    required
-                    value={user.email}
-                    onChange={handleChange}
-                />
-
-                <br />
-
-                {errors.email && (
-                    <p className="error-text">{errors.email}</p>
-                )}
-
-                <label>Password</label>
-                <br />
-
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Enter your Password"
-                    required
-                    value={user.password}
-                    onChange={handleChange}
-                />
-
-                <br />
-
-                {errors.password && (
-                    <p className="error-text">{errors.password}</p>
-                )}
-
-                <label>Confirm Password</label>
-                <br />
-
-                <input
-                    type="password"
-                    name="confirmPassword"
-                    placeholder="Please enter your Password again"
-                    required
-                    value={user.confirmPassword}
-                    onChange={handleChange}
-                />
-
-                <br />
-
-                {errors.confirmPassword && (
-                    <p className="error-text">
-                        {errors.confirmPassword}
-                    </p>
-                )}
-
-                {errors.general && (
-                    <p className="error-text">{errors.general}</p>
-                )}
-
-                <button type="submit">Submit</button>
-                <br />
-            </form>
-        </div>
-    );
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
 }
 
 export default SignUp;

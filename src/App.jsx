@@ -6,12 +6,14 @@ import Opportunities from "./components/Opportunities";
 import Contact from "./components/Contact";
 import About from "./components/About";
 import Profile from "./components/Profile";
+import ForgotPassword from "./components/ForgotPassword";
 import "./App.css";
 function App() {
 
   return (
     
     <Routes>
+      <Route path="/" element= {<Home/>} />
       <Route path="/home" element={<Home/>} />
       <Route path= "/signUp" element = {<SignUp/>} />
       <Route path="/login" element= {<Login/>} />
@@ -19,6 +21,7 @@ function App() {
       <Route path="/contact" element= {<Contact/>} />
       <Route path="/about" element= {<About/>} />
       <Route path="/profile" element= {<Profile/>} /> 
+      <Route path="/forgot-password" element= {<ForgotPassword/>} />
 
     </Routes>
 

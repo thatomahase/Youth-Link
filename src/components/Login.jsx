@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import "./Login.css";
 
@@ -62,6 +63,7 @@ function Login() {
                 required
                 />
                 <button type="submit">Submit</button><br />
+                <Link to ="/forgot-password">Forgot Password?</Link>
             </form>
         </div>
 

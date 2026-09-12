@@ -78,9 +78,8 @@ button:hover{
   background-color: transparent;
   border: none;
   border-radius: 45px;
-  border-color: none;
-  box-shadow: 0 20px 35px rgba(0,105,260,0.5);
-  color:  rgb(189, 179, 179);
+  box-shadow: 0 20px 35px rgba(0, 105, 260, 0.5);
+  color: rgb(189, 179, 179);
 }
 
 .login label{
@@ -108,4 +107,16 @@ button:hover{
     color:  rgb(167, 163, 163);
     font-size: 14px;
 
+}
+
+.login a {
+  color: whitesmoke;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.login a:hover{
+  color: rgb(26, 25, 25);
+  color: orange;
+  transition: 0.3 ease-in;
 }
