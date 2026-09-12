@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import "./SignUp.css";
 
 function SignUp() {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     fullname: "",
     email: "",
@@ -81,6 +83,7 @@ function SignUp() {
       if (response.ok) {
         console.log("Account created successfully!");
         console.log(data);
+        navigate("/login");
       } else {
         console.log("Registration failed:", data.error || data.message);
       }

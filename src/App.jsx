@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import About from "./components/About";
 import Profile from "./components/Profile";
 import ForgotPassword from "./components/ForgotPassword";
+import Logout from "./components/Logout";
 import "./App.css";
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
       <Route path="/home" element={<Home/>} />
       <Route path= "/signUp" element = {<SignUp/>} />
       <Route path="/login" element= {<Login/>} />
+      <Route path="/logout" element= {<Logout/>} />
       <Route path="/opportunities" element= {<Opportunities/>} />
       <Route path="/contact" element= {<Contact/>} />
       <Route path="/about" element= {<About/>} />
