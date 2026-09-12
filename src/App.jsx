@@ -4,6 +4,7 @@ import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import Opportunities from "./components/Opportunities";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 import About from "./components/About";
 import Profile from "./components/Profile";
 import ForgotPassword from "./components/ForgotPassword";
@@ -22,6 +23,7 @@ function App() {
       <Route path="/about" element= {<About/>} />
       <Route path="/profile" element= {<Profile/>} /> 
       <Route path="/forgot-password" element= {<ForgotPassword/>} />
+      <Route path="/footer" element={<Footer/>} />
 
     </Routes>
 
