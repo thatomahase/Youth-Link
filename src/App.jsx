@@ -9,11 +9,12 @@ import About from "./components/About";
 import Profile from "./components/Profile";
 import ForgotPassword from "./components/ForgotPassword";
 import Logout from "./components/Logout";
+import Chatbot from "./components/Chatbot";
 import "./App.css";
 function App() {
 
   return (
-    
+    <>
     <Routes>
       <Route path="/" element= {<Home/>} />
       <Route path="/home" element={<Home/>} />
@@ -26,8 +27,10 @@ function App() {
       <Route path="/profile" element= {<Profile/>} /> 
       <Route path="/forgot-password" element= {<ForgotPassword/>} />
       <Route path="/footer" element={<Footer/>} />
-
     </Routes>
+    <Chatbot />
+    </>
+    
 
  
   );

@@ -1,0 +1,122 @@
+.chatbot-wrapper {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.chatbot-window {
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.chatbot-messages {
+    flex: 1;
+    padding: 12px 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.chatbot-messages p {
+    position: relative;
+    padding: 8px 12px;
+    border-radius: 16px;
+    max-width: 80%;
+    font-size: 14px;
+    margin: 0;
+}
+
+.chatbot-messages p.bot {
+    background-color: #f0f0f0;
+    color: #1a1a1a;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+.chatbot-messages p.bot::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -4px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-top-color: #f0f0f0;
+    border-bottom: 0;
+    border-left: 0;
+    pointer-events: none;
+}
+
+.chatbot-messages p.user {
+    background-color: #0a66c2;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.chatbot-messages p.user::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -4px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-top-color: #0a66c2;
+    border-bottom: 0;
+    border-right: 0;
+    pointer-events: none;
+}
+
+.chatbot-window form {
+    display: flex;
+    border-top: 1px solid #eee;
+}
+
+.chatbot-window input {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    font-size: 14px;
+    outline: none;
+}
+
+.chatbot-window button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 0 16px;
+    cursor: pointer;
+}
+
+.chatbot-window button:hover {
+    background-color: transparent;
+}
+
+.chatbot-wrapper > button {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.chatbot-wrapper > button:hover {
+    background-color: transparent;
+}

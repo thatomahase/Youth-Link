@@ -6,7 +6,7 @@ import "./SignUp.css";
 function SignUp() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    fullname: "",
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -30,7 +30,7 @@ function SignUp() {
     let newErrors = {};
 
     if (
-      user.fullname === "" ||
+      user.username === "" ||
       user.email === "" ||
       user.password === "" ||
       user.confirmPassword === ""
@@ -61,7 +61,7 @@ function SignUp() {
     setErrors({});
 
     const userData = {
-      username: user.fullname,
+      username: user.username,
       email: user.email,
       password: user.password,
       role: "student",
@@ -100,10 +100,10 @@ function SignUp() {
         <label>Full Name</label>
         <input
           type="text"
-          name="fullname"
+          name="username"
           placeholder="Enter Your Full Name"
           required
-          value={user.fullname}
+          value={user.username}
           onChange={handleChange}
         />
 
